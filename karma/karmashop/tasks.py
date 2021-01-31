@@ -19,7 +19,6 @@ def background_task(user_id):
                     product_instace.save()
                     itmes =  itmes +'' + product_instace.name
                 else:
-                    message = "item is not Available"
                     print('item not availabel ')
             order_instnce.is_completed = True
             order_instnce.save()
@@ -36,4 +35,3 @@ def background_task(user_id):
                 print('Order Successfull')
             else:
                 print('unable to send the email')
-

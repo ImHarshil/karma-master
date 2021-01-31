@@ -8,21 +8,20 @@ def background_task(user_id):
     if user_id:
         order_instnce = my_models.Order.objects.filter(user=user_id, is_completed=False).last()
         user_instance = User.objects.filter(pk=user_id).last()
-        print(user_instance.email)
         if order_instnce:
             orderitems = order_instnce.orderitem_set.all()
-            itmes = ''
+            items = ''
             for orderitem in orderitems:
                 if orderitem.quantity <= orderitem.product.quantity:
                     product_instace = my_models.Product.objects.filter(pk=orderitem.product.id).last()
                     product_instace.quantity = product_instace.quantity - orderitem.quantity
                     product_instace.save()
-                    itmes =  itmes +'' + product_instace.name
+                    items =  items +'' + product_instace.name
                 else:
                     print('item not availabel ')
             order_instnce.is_completed = True
             order_instnce.save()
-            message = "Hello " + order_instnce.user.first_name + " Your Available Items are " + itmes
+            message = "Hello " + order_instnce.user.first_name + " Your Available Items are " + items
 
             email = send_mail(subject="this is for test purposr",
                       message=message,
@@ -31,7 +30,6 @@ def background_task(user_id):
                       recipient_list =["bomix22453@wpsavy.com"],)
 
             if email :
-                print("email has been sent")
-                print('Order Successfull')
+                print("email has been sent \n 'Order Successfull'")
             else:
                 print('unable to send the email')

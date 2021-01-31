@@ -44,10 +44,10 @@ class Order(models.Model):
 
     @property
     def get_cart_total(self):
-        order_items = self.orderitem_set.all()
+        order_items = OrderItem.objects.filter(order=self.id)
         subtotal = sum([item.get_total for item in order_items])
 
-        order_items = self.orderitem_set.all()
+        #order_items = self.orderitem_set.all()
         total_items = sum([item.quantity for item in order_items])
 
         gst = subtotal * 0.18

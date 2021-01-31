@@ -1,5 +1,5 @@
 from django.contrib import admin
-from core import models as core_models
+from . import models as my_models
 
 # Register your models here.
 class ProfileAdmin(admin.ModelAdmin):
@@ -21,12 +21,12 @@ class ShippingInfoAdmin(admin.ModelAdmin):
     list_display = ['id','user','order','address','created_date']
 
 
-admin.site.register(core_models.Profile,ProfileAdmin)
-admin.site.register(core_models.Address,AddressAdmin)
-admin.site.register(core_models.Product,ProductAdmin)
-admin.site.register(core_models.Order, OrderAdmin)
-admin.site.register(core_models.OrderItem,OrderItemAdmin)
-admin.site.register(core_models.ShippingInfo,ShippingInfoAdmin)
+admin.site.register(my_models.Profile,ProfileAdmin)
+admin.site.register(my_models.Address,AddressAdmin)
+admin.site.register(my_models.Product,ProductAdmin)
+admin.site.register(my_models.Order, OrderAdmin)
+admin.site.register(my_models.OrderItem,OrderItemAdmin)
+admin.site.register(my_models.ShippingInfo,ShippingInfoAdmin)
 
 
 

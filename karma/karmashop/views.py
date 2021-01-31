@@ -66,7 +66,7 @@ def register(request):
     return render(request,"register.html",{"form" : form})
 
 
-class HomeView(TemplateView):
+class index(TemplateView):
     template_name = "index.html"
     model = core_models.Product
     context_object_name = 'products'

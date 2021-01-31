@@ -13,8 +13,10 @@ urlpatterns = [
     path('contact/', views.contact, name="contact"),
     path('elements/', views.elements, name="elements"),
     path('login/', views.login, name="login"),
+    path('logout/', views.login, name="logout"),
     path('single-blog/', views.single_blog, name="single-blog"),
     path('single-product/', views.single_product, name="single-product"),
     path('tracking/', views.tracking, name="tracking"),
+    path('registration/', views.registration, name="registration"),
 
 ]

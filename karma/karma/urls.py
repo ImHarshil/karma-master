@@ -22,7 +22,8 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('shop/', include("karmashop.urls")),
-    path('', views.index,name="index"),
+    path('', include("karmashop.urls")),
+    #path('shop/', include("karmashop.urls")),
+    path('index', views.index,name="index"),
 
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

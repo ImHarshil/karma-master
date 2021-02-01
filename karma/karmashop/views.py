@@ -47,7 +47,7 @@ def Logout(request):
     if token_instance:
         try:
             token_instance.delete()
-        except:  # noqa
+        except:
             pass
     return redirect('/login/')
 
@@ -100,7 +100,6 @@ class ProfileView(TemplateView):
             state = form.cleaned_data["state"]
             zipcode = form.cleaned_data["zipcode"]
             country = form.cleaned_data["country"]
-            print(firstname,lastname,mobileno,alternatemobile,addressone,addresstwo,city,state,zipcode,country)
             user_instance = request.user
             profile_instance = core_models.Profile.objects.filter(user_id=user_instance).last()
 
@@ -227,7 +226,6 @@ class SearchView(ListView):
 
 class CartView(ListView):
     template_name = "cart.html"
-
     model = core_models.Order
     title = 'Cart'
 

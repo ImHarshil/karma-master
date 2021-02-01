@@ -18,7 +18,7 @@ def background_task(user_id):
                     product_instace.save()
                     items =  items +'' + product_instace.name
                 else:
-                    print('item not availabel ')
+                    print('item not available ')
             order_instnce.is_completed = True
             order_instnce.save()
             message = "Hello " + order_instnce.user.first_name + " Your Available Items are " + items

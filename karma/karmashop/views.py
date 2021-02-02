@@ -255,13 +255,11 @@ def addToBag(request):
     product_id = data['product_id']
     action = data['action']
     user = request.user
-    # print(data,action)
     product_instance = core_models.Product.objects.get(pk=product_id)
 
     order_instance,created = core_models.Order.objects.get_or_create(user = user,is_completed = False)
 
     orderitems_instance,created = core_models.OrderItem.objects.get_or_create(product = product_instance,order = order_instance)
-    # print(orderitems_instance.quantity)
     if action == 'add':
         orderitems_instance.quantity += 1
     elif action == 'remove':
